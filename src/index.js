@@ -6,11 +6,12 @@ import * as serviceWorker from './serviceWorker';
 
 import {mapStateToProps, mapDispatchToProps} from "./store/actions";
 import {INITIAL_STATE} from "./constants";
-import {createStore} from "redux";
+import {createStore, applyMiddleware} from "redux";
 import {Provider, connect} from 'react-redux';
 import reducers from './store/reducers';
+import thunk from 'redux-thunk';
 
-const store = createStore(reducers, INITIAL_STATE);
+const store = createStore(reducers, INITIAL_STATE, applyMiddleware(thunk));
 const Container = connect(mapStateToProps, mapDispatchToProps)(App);
 
 ReactDOM.render(
