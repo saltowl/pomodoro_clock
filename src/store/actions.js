@@ -52,7 +52,33 @@ const reset = () => {
     return {
         type: cnst.RESET
     }
-}
+};
+
+const playBuzzer = () => {
+  document.getElementById('beep').play();
+};
+
+const stopBuzzer = () => {
+    const buzzer = document.getElementById('beep');
+    buzzer.pause();
+    buzzer.currentTime = 0;
+};
+
+const addTimeIsRunningOutWarning = () => {
+    const timeLeftClassList = document.getElementById('time-left').classList;
+    if (!timeLeftClassList.contains('timeIsRunningOut')) {
+        timeLeftClassList.add('timeIsRunningOut');
+        document.getElementById('timer-label').classList.add('timeIsRunningOut');
+    }
+};
+
+const removeTimeIsRunningOutWarning = () => {
+    const timeLeftClassList = document.getElementById('time-left').classList;
+    if (timeLeftClassList.contains('timeIsRunningOut')) {
+        timeLeftClassList.remove('timeIsRunningOut');
+        document.getElementById('timer-label').classList.remove('timeIsRunningOut');
+    }
+};
 
 export const mapStateToProps = (state) => {
     return {
@@ -76,6 +102,12 @@ export const mapDispatchToProps = (dispatch) => {
                 dispatch(start());
                 timer = setInterval(() => {
                     if (stateTimeLeft >= 1) {
+                        if (stateTimeLeft <= 61) {
+                            addTimeIsRunningOutWarning();
+                        }
+                        if (stateTimeLeft <= 3) {
+                            playBuzzer();
+                        }
                         dispatch(startTimer(--stateTimeLeft));
                     } else {
                         if (statePhase === 'session') {
@@ -86,6 +118,7 @@ export const mapDispatchToProps = (dispatch) => {
                             stateTimeLeft = sessionLength * 60;
                         }
                         dispatch(changePhase(statePhase, stateTimeLeft));
+                        removeTimeIsRunningOutWarning();
                     }
                 }, 1000, dispatch, startTimer, stateTimeLeft);
             }
@@ -109,7 +142,9 @@ export const mapDispatchToProps = (dispatch) => {
         reset: () => {
             dispatch(pause());
             clearInterval(timer);
+            stopBuzzer();
             dispatch(reset());
+            removeTimeIsRunningOutWarning();
         }
     };
 };

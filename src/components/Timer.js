@@ -22,7 +22,7 @@ class Timer extends React.Component {
                     <button id={'start_stop'} onClick={this.props.handleStartPause}><i className={classes[0]}/></button>
                     <button id={'reset'} onClick={this.props.reset}><i className={'fa fa-refresh'}/></button>
                 </div>
-                <audio id={'beep'}></audio>
+                <audio id={'beep'} preload={'auto'} src={'https://goo.gl/65cBl1'} />
             </div>
         );
     }
