@@ -18,9 +18,9 @@ class UnitDuration extends React.Component {
 
     render() {
         return (
-            <div className={'container'}>
-                <div className={'row'}><div id={this.props.name + '-label'}>{this.props.name[0].toLocaleUpperCase() + this.props.name.slice(1) + ' Length'}</div></div>
-                <div className={'row'}>
+            <div className={'UnitDuration'}>
+                <div className={'row flexBlock'}><div id={this.props.name + '-label'}>{this.props.name[0].toLocaleUpperCase() + this.props.name.slice(1) + ' Length'}</div></div>
+                <div className={'row flexBlock'}>
                     <button id={this.props.name + '-decrement'} onClick={this.decrementDuration}><i className={'fa fa-arrow-down'} /></button>
                     <div id={this.props.name + '-length'}>{this.props.length}</div>
                     <button id={this.props.name + '-increment'} onClick={this.incrementDuration}><i className={'fa fa-arrow-up'}/></button>

@@ -10,7 +10,7 @@ class App extends React.Component {
 
   render() {
     return (
-        <div className={'App'}>
+        <div className={'flexBlock'} id={'App'}>
           <Clock
               start={this.props.start}
               sessionLength={this.props.sessionLength}

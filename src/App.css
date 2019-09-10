@@ -1,0 +1,81 @@
+@font-face {
+    font-family: "Digital";
+    src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot");
+    src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff") format("woff"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.svg#Digital-7") format("svg");
+}
+
+.flexBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#App {
+    --font-size: 28px;
+    --border-radius: 8px !important;
+
+    text-align: center;
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    background: #5C8B7E;
+    color: #FFEBCC;
+    font-weight: bold;
+    font-size: var(--font-size);
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: calc(var(--font-size) * 2);
+    font-weight: bold !important;
+}
+
+button {
+    background: transparent;
+    color: #FFEBCC;
+    border: 2px #86A79E outset;
+    border-radius: var(--border-radius);
+    margin: 10px !important;
+    padding: 8px;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+    border: 2px #86A79E inset;
+}
+
+.UnitDuration, #timer {
+    margin: 15px;
+}
+
+#timer-block {
+    border: 5px #86A79E groove;
+    width: fit-content;
+    width: -moz-fit-content;
+    margin: auto;
+    padding: 0 20px;
+    border-radius: var(--border-radius);
+    font-size: calc(var(--font-size) * 1.5);
+}
+
+#time-left {
+    font-family: Digital;
+    font-size: calc(var(--font-size) * 2);
+}
+
+.timeIsRunningOut {
+    color: #813947;
+}
+
+@media screen and (max-width: 510px) {
+    #App {
+        --font-size: 20px;
+    }
+}
